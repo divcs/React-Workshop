@@ -1,19 +1,27 @@
-import { useState } from 'react';
-import { Button, Form, InputGroup } from 'react-bootstrap';
-
+import { useState } from "react";
+import { Button, Form, InputGroup } from "react-bootstrap";
 
 function App() {
+  const [fnum, setFnum] = useState();
+  const [snum, setSnum] = useState();
+  const [res, setRes] = useState();
+
+  const addFun = () => {
+    setRes("The Result of Sum is " + (parseInt(fnum) + parseInt(snum)));
+  };
+
+  const subFun = () => {
+    setRes(" The Result of Sub is " + (parseInt(fnum) - parseInt(snum)));
+  };
+
+  const mulFun = () => {
+    setRes("The Result of  Mul is " + parseInt(fnum) * parseInt(snum));
+  };
+
+  const divFun = () => {
+    setRes("The Result of  Div is " + (parseInt(fnum) % parseInt(snum)));
+  };
   return (
-
-    const [fnum, setFnum]= useState();
-    const [snum, setSnum]= useState();
-    const [res, setRes]= useState();
-
-    const addFun=()=>{
-      setRes("Sum is "+(parseInt(fnum)+parseInt(snum)))
-    }
-    return 
-
     <>
       <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">First Number</InputGroup.Text>
@@ -22,7 +30,9 @@ function App() {
           aria-label="Username"
           aria-describedby="basic-addon1"
           value={fnum}
-          onChange={(e)=>{setFnum(e.target.value);}}
+          onChange={(e) => {
+            setFnum(e.target.value);
+          }}
         />
       </InputGroup>
 
@@ -33,14 +43,36 @@ function App() {
           aria-label="Username"
           aria-describedby="basic-addon1"
           value={snum}
-          onChange={(e)=>{setFnum(e.target.value);}}
+          onChange={(e) => {
+            setSnum(e.target.value);
+          }}
         />
       </InputGroup>
 
-      <Button variant="success" onClick={()=>addFun()}>ADD</Button>
-    <h1>Sum is: {res}</h1>
+<div className="d-flex">
+      <Button variant="success" onClick={() => addFun()}>
+        ADD
+      </Button>
+      
+
+      <Button variant="danger" onClick={() => subFun()}>
+        SUB
+      </Button>
+  
+
+      <Button variant="info" onClick={() => mulFun()}>
+        MUL
+      </Button>
+    
+
+      <Button variant="primary" onClick={() => divFun()}>
+        DIV
+      </Button>
+
+      </div>
+      <h1>{res}</h1>
     </>
-  )
+  );
 }
 
 export default App;
